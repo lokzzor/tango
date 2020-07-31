@@ -1,0 +1,95 @@
+.flex-container{
+    display: flex;
+    padding: 1%;
+}
+.cont1{
+    width: 27%;
+    flex-direction: column;
+}
+.cont1 mat-card{
+    width: 73%;
+    margin-bottom: 3%;
+    box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    border-radius: 0.6em;
+}
+.cont2{
+    width: 70%;
+}
+.example-spacer {  flex: 1 1 auto;}
+
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #2862ff7a;
+}
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #3f51b5;
+}
+.cont2 mat-card{
+  width: 100%;
+  margin-bottom: 3%;
+  box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+  border-radius: 0.6em;
+  display: flex;
+  flex-direction: column;
+}
+.mat-form-field {
+  width: 14em;
+  font-size: 13.5px;
+}
+
+.mat-card-header{
+    justify-content: center;
+    cursor: default;
+    padding-bottom: 4%;    font-size: 18px;    padding-top: 1%;
+    font-weight: bold;
+}
+:host ::ng-deep .mat-form-field-wrapper{
+  margin: 0 !important;
+  padding: 3%;
+} 
+.mat-card-content{
+    flex-direction: column;    text-align: center;
+}
+.but{
+    justify-content: center; display: flex; width: 73%;padding: 0px 16px 16px 16px;
+}
+.but button{
+    background: white;
+    color: black;
+    box-shadow: 0 0px 5px 1px rgba(0,0,0,.1), 0 1px 0px 0 rgba(0,0,0,.1), 0 1px 0px 0 rgba(0,0,0,.1);
+    font-family: San Francisco;
+    font-size: 0.8em;
+    line-height: 2.5 !important;
+}
+section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }

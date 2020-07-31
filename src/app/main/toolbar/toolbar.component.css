@@ -1,0 +1,43 @@
+.shadow-box { box-shadow: 0 1px 5px #525252; z-index: 2;}
+.mat-toolbar-row, .mat-toolbar-single-row { height:2.4em;justify-content: center;}
+.mat-toolbar.mat-primary { background: #2862ff; color: #fff;}
+.mat-toolbar-multiple-rows { min-height: 0px;}
+.example-icon { padding: 0 14px;}
+.example-spacer {  flex: 1 1 auto;}
+.ss {
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: San Francisco;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 -2px 5px 0 rgba(0,0,0,.12);
+}
+.ss2 {
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: San Francisco;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 -2px 5px 0 rgba(0,0,0,.12);
+}
+.ss3 {
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: San Francisco;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 -2px 5px 0 rgba(0,0,0,.12);
+}
+@media only screen and (min-width: 2100px) {.ss{font-size: 21px;} .ss2{font-size: 21px;} .ss3{font-size: 21px;} .t1{font-size: 17px;}}
+@media screen and (max-width: 2100px) and (min-width: 1925px){.ss{font-size: 21px;} .ss2{font-size: 21px;} .ss3{font-size: 21px;} .t1{font-size: 17px;}}
+@media screen and (max-width: 1925px) and (min-width: 1824px){.ss{font-size: 21px;} .ss2{font-size: 21px;} .ss3{font-size: 21px;} .t1{font-size: 15px;}}
+@media screen and (max-width: 1824px) and (min-width: 1700px){}
+@media screen and (max-width: 1700px) and (min-width: 1400px){}
+@media screen and (max-width: 1400px) and (min-width: 1200px){}
+@media screen and (max-width: 1200px) and (min-width: 1000px){.t1{font-size: 13px;}}
+@media screen and (max-width: 1000px) and (min-width: 900px){}
+@media screen and (max-width: 900px) and (min-width: 700px){}
+@media screen and (max-width: 700px) and (min-width: 480px){}
+@media screen and (max-width: 700px) and (min-width: 480px){}
+@media only screen and (min-width : 320px) and (max-width : 480px) {}
+/**/

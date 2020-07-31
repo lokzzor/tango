@@ -1,0 +1,6 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {  margin: 0px auto;}
+
+.mat-card-header-text {
+    margin: 0 !important;
+}
