@@ -55,10 +55,12 @@
                 </div>
             </mat-card-content>
         </mat-card>
-        <mat-card>
-            <mat-card-header>
-                Selected Data
-            </mat-card-header>
+        <mat-expansion-panel (click)="togglePanel1()" style="width: 80%;margin-bottom: 3%; box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); border-radius: 0.6em;" [expanded]="panelOpenState" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="margin: 0 auto; flex-grow: 0;font-size:22px;font-family: 'Source Sans Pro', sans-serif; ">
+                    Selected Data
+                </mat-panel-title>
+            </mat-expansion-panel-header>
             <mat-card-content>
                 <div>
                     <form>
@@ -73,22 +75,24 @@
                 <div>
                     <form>
                         <mat-form-field appearance="outline">
-                            <mat-label>Run</mat-label>
+                            <mat-label>Run number</mat-label>
                             <input autocomplete="off"
                                 onkeypress="return String.fromCharCode(event.charCode).match(/[0-9- ]/g) != null"
                                 matInput [(ngModel)]="fil.run" [ngModelOptions]="{standalone: true}">
                         </mat-form-field>
                     </form>
                     <form>
-                        <mat-slide-toggle>Slide me!</mat-slide-toggle>
+                        <mat-slide-toggle (change)="togglePanel($event)">Time Range!</mat-slide-toggle>
                     </form>
                 </div>
             </mat-card-content>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>
-                Time Range
-            </mat-card-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel (click)="togglePanel()" style="width: 80%;margin-bottom: 3%; box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); border-radius: 0.6em;" [expanded]="panelOpenState1" hideToggle="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="margin: 0 auto; flex-grow: 0;font-size:22px;font-family: 'Source Sans Pro', sans-serif;">
+                    Time Range
+                </mat-panel-title>
+            </mat-expansion-panel-header>
             <mat-card-content>
                 <div style="display: flex;justify-content: center;">
                     <form>
@@ -139,24 +143,25 @@
                     </form>
                 </div>
             </mat-card-content>
-        </mat-card>
+        </mat-expansion-panel>
         <div class="but">
             <button mat-button color="primary" style="margin-right: 1.5%;">Show</button>
-            <button mat-button color="primary" style="margin-left: 1.5%;">Reset</button>
+            <button mat-button color="primary" (click)="togglePanel1()" style="margin-left: 1.5%;">Reset</button>
         </div>
     </div>
     <div class="cont2">
-            <mat-card>
+        <mat-card>
 
-                <div style="margin: 0 auto;">
-                    <div style="font-weight: bold;font-size: 18px;cursor: default;display:flex;padding-top: 0%;padding-bottom: 1%;justify-content: center;">
-                        <div >Parameters:</div>
+            <div style="margin: 0 auto;">
+                <div
+                    style="font-family: 'Source Sans Pro', sans-serif;font-size: 22px;cursor: default;display:flex;padding-top: 0%;padding-bottom: 1%;justify-content: center;">
+                    <div>Parameters:</div>
 
-                        <div style="margin-left: 20%;">Time Range:</div>
-                    </div>
- 
-                        <img src="../../../assets/test.png" >
+                    <div style="margin-left: 20%;">Time Range:</div>
                 </div>
-            </mat-card>
+
+                <img src="../../../assets/test.png">
+            </div>
+        </mat-card>
     </div>
 </div>
