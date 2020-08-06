@@ -30,10 +30,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ToolbarComponent } from './main/toolbar/toolbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatTimepickerModule } from 'mat-timepicker';
 
 
-
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,7 +45,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,MatSlideToggleModule,MatSelectModule, MatNativeDateModule, MatIconModule,MatProgressSpinnerModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatCardModule, MatDialogModule, MatTabsModule, MatProgressSpinnerModule, MatInputModule, MatListModule, MatProgressBarModule, MatExpansionModule, MatDatepickerModule, MatFormFieldModule, MatCheckboxModule, MatSliderModule,
+    MatTimepickerModule,
+    ReactiveFormsModule,FormsModule,MatSlideToggleModule,MatSelectModule, MatNativeDateModule, MatIconModule,MatProgressSpinnerModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatSidenavModule, MatCardModule, MatDialogModule, MatTabsModule, MatProgressSpinnerModule, MatInputModule, MatListModule, MatProgressBarModule, MatExpansionModule, MatDatepickerModule, MatFormFieldModule, MatCheckboxModule, MatSliderModule,
     AppRoutingModule
   ],
   exports: [
