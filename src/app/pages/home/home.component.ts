@@ -46,8 +46,7 @@ export class HomeComponent implements OnInit {
       time: [this.defaultValue, Validators.required]
     });
   }
-  panelOpenState = true;
-  panelOpenState1 = false;
+
 
   fil: any = {per:"", run:"", start:"", end:"",stime:"",etime:""}
   dataper=[1,2,3,4,5,6,7];
@@ -60,22 +59,33 @@ export class HomeComponent implements OnInit {
 
   showOnDirtyErrorStateMatcher = new ShowOnDirtyErrorStateMatcher();
   customErrorStateMatcher = new CustomErrorStateMatcher();
-//moment(this.fil.start).format('YYYY-MM-DD')}
+//
 
   form: FormGroup;
   checked: boolean = false;
-  checked2: boolean = false;
-
+  checked2 = false;
+  parameter="";start;end;
+  checked3: boolean = false;
+  panelOpenState = true;
+  panelOpenState2 = false;
+  isCountrySelected:boolean=false;selected;
+  imgview: boolean =false;
+  toogle(){
+    this.panelOpenState = !this.panelOpenState;
+    this.panelOpenState2 = !this.panelOpenState2;
+  }
   change(e) {
+    this.checked = !this.checked;
+    this.isCountrySelected=!this.isCountrySelected;
     if (this.checked) {
-        this.checked = !this.checked;
-        
-        console.log("toggle")
-
-    } else {
-      this.checked = !this.checked;
+      console.log("open");
       this.panelOpenState = !this.panelOpenState;
-      this.panelOpenState1 = !this.panelOpenState1;
+      this.panelOpenState2 = !this.panelOpenState2;
+    } else {
+      console.log("close");
+      this.checked = true;
+      this.panelOpenState = !this.panelOpenState;
+      this.panelOpenState2 = !this.panelOpenState2;
     }
   }
   change2(e) {
@@ -88,18 +98,40 @@ export class HomeComponent implements OnInit {
       this.checked2 = !this.checked2;
       }
   }
-  togglePanel(){
-    this.panelOpenState = !this.panelOpenState;
-    this.panelOpenState1 = !this.panelOpenState1;
-  }
+
   ngOnInit(): void {
+    this.panelOpenState = true;
+    this.panelOpenState2 = false;
+    setTimeout(()=>{
+      this.fil={per:'7',run:'2041', start:'03/04/2018', end:'03/04/2018'};this.selected="7";
+      this.parameter="mpd/bmn/adc_bman_beam/ch0";
+      this.show();
+ }, 1400);
+  }
+  show(){
+    if (!!this.fil.start){
+      this.start=moment(this.fil.start).format('DD/MM/YYYY');
+    }
+    if (!!this.fil.end){
+      this.end=moment(this.fil.end).format('DD/MM/YYYY');
+
+    }
+    if(!!this.fil.start && !!this.fil.end){
+      this.end=" - "+moment(this.fil.end).format('DD/MM/YYYY');
+    }
+
+    this.imgview=true;
   }
   reset(){
     this.fil= {per:"", run:"", start:"", end:"",stime:"",etime:""};
     this.panelOpenState = true;
-    this.panelOpenState1 = false;
+    this.panelOpenState2 = false;
     this.checked= false;
     this.checked2= false;
+    this.checked3= false;
+    this.parameter="";
+    this.start=""; this.end="";
+    this.isCountrySelected = false;
   }
 /*   public toggle(event: MatSlideToggleChange) {
     console.log('toggle', event.checked);

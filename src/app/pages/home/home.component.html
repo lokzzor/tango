@@ -5,10 +5,10 @@
                 Tango Parameter
             </mat-card-header>
             <div class="col ">
-                <mat-label ngClass="labelBeforeSlide">Custom</mat-label>
-                <mat-slide-toggle (change)="change2($event)" [checked]="checked2">Dictionary</mat-slide-toggle>
+                <mat-label ngClass="labelBeforeSlide">Dictionary</mat-label>
+                <mat-slide-toggle (change)="change2($event)" [checked]="checked2">Custom</mat-slide-toggle>
             </div>
-            <mat-card-content *ngIf="!checked2">
+            <mat-card-content *ngIf="checked2">
                 <div>
                     <form>
                         <mat-form-field appearance="outline">
@@ -58,10 +58,10 @@
                     </form>
                 </div>
             </mat-card-content>
-            <mat-card-content *ngIf="checked2">
+            <mat-card-content *ngIf="!checked2">
                 <form>
                     <mat-form-field appearance="outline">
-                        <mat-label>Dictionary</mat-label>
+                        <mat-label>Parameter</mat-label>
                         <mat-select>
                             <mat-option value="option1">Option 1</mat-option>
                             <mat-option value="option2">Option 2</mat-option>
@@ -71,107 +71,112 @@
                 </form>
             </mat-card-content>
         </mat-card>
-        <mat-expansion-panel
-            style="width: 80%;margin-bottom: 3%; box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); border-radius: 0.6em;"
-            [expanded]="panelOpenState" hideToggle="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title
-                    style="margin: 0 auto; flex-grow: 0;font-size:22px;font-family: 'Source Sans Pro', sans-serif; ">
-                    Run Selector
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-card-content>
-                <div>
-                    <form>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Period number</mat-label>
-                            <mat-select [(ngModel)]="fil.per" [ngModelOptions]="{standalone: true}">
-                                <mat-option *ngFor="let per of dataper" [value]="per">Period {{per}} </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </form>
-                </div>
-                <div>
-                    <form>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Run number</mat-label>
-                            <input autocomplete="off"
-                                onkeypress="return String.fromCharCode(event.charCode).match(/[0-9- ]/g) != null"
-                                matInput [(ngModel)]="fil.run" [ngModelOptions]="{standalone: true}">
-                        </mat-form-field>
-                    </form>
-                    <form>
-                        <mat-slide-toggle style="font-size: 17px; padding-top: 2%;font-family: 'Source Sans Pro', sans-serif;" (change)="change($event)" [checked]="checked">Fill Time Interval
-                        </mat-slide-toggle>
-                        <!-- <mat-slide-toggle (click)="togglePanel()">Fill Time Interval</mat-slide-toggle> -->
-                    </form>
-                </div>
-            </mat-card-content>
-        </mat-expansion-panel>
-        <mat-expansion-panel
-            style="width: 80%;margin-bottom: 3%; box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); border-radius: 0.6em;"
-            [expanded]="panelOpenState1" hideToggle="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title
-                    style="margin: 0 auto; flex-grow: 0;font-size:22px;font-family: 'Source Sans Pro', sans-serif;">
-                    Time Interval
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-card-content>
-                <div style="display: flex;justify-content: center;">
-                    <form>
-                        <mat-form-field style="width: 11em;text-align: center;" appearance="outline">
-                            <mat-label>Start Date</mat-label>
-                            <input autocomplete="off"
-                                onkeypress="return String.fromCharCode(event.charCode).match(/[0-9-/ ]/g) != null"
-                                matInput [matDatepicker]="picker" [(ngModel)]="fil.start"
-                                [ngModelOptions]="{standalone: true}">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
-                    </form>
-                    <form>
-                        <div>
-                            <mat-form-field style="width: 11em;text-align: center;cursor: pointer;"
-                                appearance="outline">
-                                <mat-label>Start Time</mat-label>
-                                <input autocomplete="off" matTimepicker #t2="matTimepicker" #time2="ngModel"
-                                    [minDate]="minValue" [maxDate]="maxValue" id="timepicker-example-2" mode="12h"
-                                    [(ngModel)]="fil.stime" name="time-2">
-                                <mat-icon matSuffix>access_time</mat-icon>
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="panelOpenState"
+                style="width: 80%;margin-bottom: 3%; box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); border-radius: 0.6em;"
+                hideToggle="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title
+                        style="margin: 0 auto; flex-grow: 0;font-size:22px;font-family: 'Source Sans Pro', sans-serif; ">
+                        Run Selector
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-card-content>
+                    <div>
+                        <form>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Period number</mat-label>
+                                <mat-select [disabled]="isCountrySelected" [(ngModel)]="fil.per"  
+                                    [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let per of dataper" [value]="per">Period {{per}} </mat-option>
+                                </mat-select>
                             </mat-form-field>
-                        </div>
-                    </form>
-                </div>
-                <div style="display: flex;justify-content: center;">
-                    <form>
-                        <mat-form-field style="width: 11em;text-align: center;" appearance="outline">
-                            <mat-label>End Date</mat-label>
-                            <input autocomplete="off"
-                                onkeypress="return String.fromCharCode(event.charCode).match(/[0-9-/ ]/g) != null"
-                                matInput [matDatepicker]="pickerr" [(ngModel)]="fil.end"
-                                [ngModelOptions]="{standalone: true}">
-                            <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
-                            <mat-datepicker #pickerr></mat-datepicker>
-                        </mat-form-field>
-                    </form>
-                    <form>
-                        <div>
-                            <mat-form-field style="width: 11em;text-align: center;cursor: pointer;"
-                                appearance="outline">
-                                <mat-label>End Time</mat-label>
-                                <input autocomplete="off" matTimepicker #t3="matTimepicker" #time3="ngModel"
-                                    [minDate]="minValue" [maxDate]="maxValue" id="timepicker-example-2" mode="12h"
-                                    [(ngModel)]="fil.etime" name="time-3">
-                                <mat-icon matSuffix>access_time</mat-icon>
+                        </form>
+                    </div>
+                    <div>
+                        <form>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Run number</mat-label>
+                                <input autocomplete="off" [disabled]="isCountrySelected"
+                                    onkeypress="return String.fromCharCode(event.charCode).match(/[0-9- ]/g) != null"
+                                    matInput [(ngModel)]="fil.run" [ngModelOptions]="{standalone: true}">
                             </mat-form-field>
-                        </div>
-                    </form>
-                </div>
-            </mat-card-content>
-        </mat-expansion-panel>
+                        </form>
+                        <form>
+                            <mat-slide-toggle
+                                style="font-size: 16px; padding-top: 2%;font-family: 'Source Sans Pro', sans-serif;"
+                                (change)="change($event)" [checked]="checked">Fill Time Interval
+                            </mat-slide-toggle>
+                            <!-- <mat-slide-toggle (click)="togglePanel()">Fill Time Interval</mat-slide-toggle> -->
+                        </form>
+                    </div>
+                </mat-card-content>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState2" (closed)="panelOpenState" [expanded]="panelOpenState2"
+                style="width: 80%;margin-bottom: 3%; box-shadow: 0 1px 5px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); border-radius: 0.6em;"
+                hideToggle="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title
+                        style="margin: 0 auto; flex-grow: 0;font-size:22px;font-family: 'Source Sans Pro', sans-serif;">
+                        Time Interval
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-card-content>
+                    <div style="display: flex;justify-content: center;">
+                        <form>
+                            <mat-form-field style="width: 11em;text-align: center;" appearance="outline">
+                                <mat-label>Start Date</mat-label>
+                                <input autocomplete="off"
+                                    onkeypress="return String.fromCharCode(event.charCode).match(/[0-9-/ ]/g) != null"
+                                    matInput [matDatepicker]="picker" [(ngModel)]="fil.start"
+                                    [ngModelOptions]="{standalone: true}">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </form>
+                        <form>
+                            <div>
+                                <mat-form-field style="width: 11em;text-align: center;cursor: pointer;"
+                                    appearance="outline">
+                                    <mat-label>Start Time</mat-label>
+                                    <input autocomplete="off" matTimepicker #t2="matTimepicker" #time2="ngModel"
+                                        [minDate]="minValue" [maxDate]="maxValue" id="timepicker-example-2" mode="12h"
+                                        [(ngModel)]="fil.stime" name="time-2">
+                                    <mat-icon matSuffix>access_time</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="display: flex;justify-content: center;">
+                        <form>
+                            <mat-form-field style="width: 11em;text-align: center;" appearance="outline">
+                                <mat-label>End Date</mat-label>
+                                <input autocomplete="off"
+                                    onkeypress="return String.fromCharCode(event.charCode).match(/[0-9-/ ]/g) != null"
+                                    matInput [matDatepicker]="pickerr" [(ngModel)]="fil.end"
+                                    [ngModelOptions]="{standalone: true}">
+                                <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerr></mat-datepicker>
+                            </mat-form-field>
+                        </form>
+                        <form>
+                            <div>
+                                <mat-form-field style="width: 11em;text-align: center;cursor: pointer;"
+                                    appearance="outline">
+                                    <mat-label>End Time</mat-label>
+                                    <input autocomplete="off" matTimepicker #t3="matTimepicker" #time3="ngModel"
+                                        [minDate]="minValue" [maxDate]="maxValue" id="timepicker-example-2" mode="12h"
+                                        [(ngModel)]="fil.etime" name="time-3">
+                                    <mat-icon matSuffix>access_time</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </form>
+                    </div>
+                </mat-card-content>
+            </mat-expansion-panel>
+        </mat-accordion>
         <div class="but">
-            <button mat-button color="primary" style="margin-right: 1.5%;">Show</button>
+            <button mat-button color="primary" (click)="show()" style="margin-right: 1.5%;">Show</button>
             <button mat-button color="primary" (click)="reset()" style="margin-left: 1.5%;">Reset</button>
         </div>
     </div>
@@ -179,11 +184,11 @@
         <mat-card>
             <div style="margin: 0 auto;">
                 <div
-                    style="font-family: 'Source Sans Pro', sans-serif;font-size: 22px;cursor: default;display:flex;padding-top: 0%;padding-bottom: 1%;justify-content: center;">
-                    <div>Parameter:</div>
-                    <div style="margin-left: 20%;">Time : {{fil.start}}{{fil.end}}</div>
+                    style="font-family: 'Source Sans Pro', sans-serif;font-size: 24px;cursor: default;display:flex;padding-top: 2.5%;padding-bottom: 0.5%;justify-content: center;">
+                    <div>Parameter: &nbsp;{{parameter}}</div>
+                    <div style="margin-left: 15%;">Time: &nbsp;{{start}}{{end}}</div>
                 </div>
-                <img src="../../../assets/test.png">
+                <img *ngIf="imgview" src="../../../assets/test.png">
             </div>
         </mat-card>
     </div>
