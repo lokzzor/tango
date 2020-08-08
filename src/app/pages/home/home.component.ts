@@ -103,21 +103,21 @@ export class HomeComponent implements OnInit {
     this.panelOpenState = true;
     this.panelOpenState2 = false;
     setTimeout(()=>{
-      this.fil={per:'7',run:'2041', start:'03/04/2018', end:'03/04/2018'};this.selected="7";
+      this.fil={per:'7',run:'2041', start:'03/04/2018 04:25:17', end:'03/04/2018 13:55:33'};this.selected="7";
       this.parameter="mpd/bmn/adc_bman_beam/ch0";
       this.show();
  }, 1400);
   }
   show(){
     if (!!this.fil.start){
-      this.start=moment(this.fil.start).format('DD/MM/YYYY');
+      this.start=moment(this.fil.start).format('DD/MM/YYYY')+"  04:25:17";
     }
     if (!!this.fil.end){
-      this.end=moment(this.fil.end).format('DD/MM/YYYY');
+      this.end=moment(this.fil.end).format('DD/MM/YYYY')+ "  13:55:33";
 
     }
     if(!!this.fil.start && !!this.fil.end){
-      this.end=" - "+moment(this.fil.end).format('DD/MM/YYYY');
+      this.end=" - "+moment(this.fil.end).format('DD/MM/YYYY')+ "  13:55:33";
     }
 
     this.imgview=true;
